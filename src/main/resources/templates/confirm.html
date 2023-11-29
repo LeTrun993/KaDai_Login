@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome</title>
+	<style>
+		body {
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			align-content: center;
+			background: linear-gradient(120deg, #3ca7ee, #9b408f);
+		}
+
+		.container {
+			width: 400px;
+			border: none;
+			border-radius: 10px;
+			background-color: rgb(192, 192, 192);
+			padding: 40px;
+			text-align: center;
+		}
+
+		input {
+			outline-style: none;
+			background: rgb(0, 255, 64);
+			height: 35px;
+			margin-top: 40px;
+			border: none;
+			border-radius: 5px 5px;
+			padding: 5px 10px;
+		}
+
+		input:hover {
+			background: greenyellow;
+			box-shadow: 3px 3px 5px;
+			transition: 0.3s;
+		}
+	</style>
+
+</head>
+
+<body>
+	<form>
+		<div class=container>
+			<h1>個人情報確認：</h1>
+		
+		<table border="1">
+			<tr>
+				<th>姓名</th>
+				<td th:text="${user.firstName} + ${user.lastName}">...</td>
+			</tr>
+			<tr>
+				<th>フリガナ</th>
+				<td th:text="${user.firstName_furigana} + ${user.lastName_furigana}">...</td>
+			</tr>
+			<tr>
+				<th>生年月日</th>
+				<td th:text="${user.bday}">...</td>
+			</tr>
+			<tr>
+				<th>性別</th>
+				<td th:text="${user.gender}">...</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td th:text="${user.email}">...</td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td th:text="${user.password}">...</td>
+			</tr>
+			<tr>
+				<th>住所</th>
+				<td th:text="${user.addres}">...</td>
+			</tr>
+			<tr>
+				<th>国籍</th>
+				<td th:text="${user.country}">...</td>
+			</tr>
+		</table>
+		</div>
+	</form>
+</body>

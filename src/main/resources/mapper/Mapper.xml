@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.LoginMapper">
+
+    <insert id="insert" parameterType="com.example.model.LoginModel" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO mp_auth.login_trun(firstName,lastName,firstName_furigana,lastName_furigana,bday,gender,email,password,confirm_password,addres,country) 
+    VALUES (#{firstName},#{lastName},#{firstName_furigana},#{lastName_furigana},#{bday},#{gender},#{email},#{password},#{confirm_password},#{addres},#{country})
+    </insert>
+	
+	
+</mapper>
+	

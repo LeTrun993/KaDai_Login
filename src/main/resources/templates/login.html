@@ -1,0 +1,46 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+
+ </head>
+ <body>
+    <header>
+        <div class="logo">
+            <a href=""><img src="../img/logo.img" alt=""></a>
+        </div>
+    </header>
+    
+    <main>
+		<form th:action ="@{/welcome}" method="post">
+        <div class="container">
+                <div class="box">
+                    <h1>Login</h1>
+                    <p>Email and Password:</p>
+            <section>
+                <div class="login">
+					
+                    <input type="text" name ="email" placeholder="メール">
+                    <input type="password" name="password" id="" placeholder="パスワード">
+                    <small style="color: red;" th:text ="${error}" ></small>
+                    <small style="color: red;" th:text ="${fal}" ></small>
+                	<button type="submit">ログイン</button>
+                </div>
+            </section>
+            
+            </form>
+            <p class="taito">Amazonの利用規約とプライバシー規約に同意いただける場合はログインしてください。</p>
+            <div class="account">
+                <p>初めてAmazonをご利用ですか?</p>
+                <a th:href ="@{/signup}">Amazonアカウントを作成する</a>
+             </div>
+            </div>
+         </div>
+    </main>
+    
+    
+ </body>
+ </html>

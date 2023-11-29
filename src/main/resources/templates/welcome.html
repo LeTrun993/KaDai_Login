@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome</title>
+	<style>
+		body {
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			align-content: center;
+			background: linear-gradient(120deg, #3ca7ee, #9b408f);
+		}
+
+		.container {
+			width: 400px;
+			border: none;
+			border-radius: 10px;
+			background-color: rgb(192, 192, 192);
+			padding: 40px;
+			text-align: center;
+		}
+
+		input {
+			outline-style: none;
+			background: rgb(0, 255, 64);
+			height: 35px;
+			margin-top: 40px;
+			border: none;
+			border-radius: 5px 5px;
+			padding: 5px 10px;
+		}
+
+		input:hover {
+			background: greenyellow;
+			box-shadow: 3px 3px 5px;
+			transition: 0.3s;
+		}
+	</style>
+
+</head>
+
+<body>
+	<form th:action="@{/confirm}" method="post">
+		<div class=container>
+			<h1 th:text="'Welcome ' + ${username}"></h1>
+			<input type="submit" value="情報確認">
+			<input type="hidden" th:name="firstName" th:value="${user.firstName}" />
+			<input type="hidden" th:name="lastName" th:value="${user.lastName}" />
+			<input type="hidden" th:name="firstName_furigana" th:value="${user.firstName_furigana}" />
+			<input type="hidden" th:name="lastName_furigana" th:value="${user.lastName_furigana}" />
+			<input type="hidden" th:name="bday" th:value="${user.bday}" />
+			<input type="hidden" th:name="gender" th:value="${user.gender}" />
+			<input type="hidden" th:name="email" th:value="${user.email}" />
+			<input type="hidden" th:name="password" th:value="${user.password}" />
+			<input type="hidden" th:name="addres" th:value="${user.addres}" />
+			<input type="hidden" th:name="country" th:value="${user.country}" />
+		
+		</div>
+	</form>
+</body>

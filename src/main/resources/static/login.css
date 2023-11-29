@@ -1,0 +1,105 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.logo{
+    text-align: center;
+}
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+     background: linear-gradient(120deg, #3ca7ee, #9b408f );
+    
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px 5px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(104, 151, 151);
+    background-color: aliceblue;
+    
+}
+ button{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.box{
+    margin: 20px;
+    padding: 10px;   
+}
+.box h1{
+	text-align: center;
+}
+.login {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+}
+.login input{
+    height: 35px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px 6px;
+    margin: 8px 0;
+    outline: none;
+}
+.login input:hover {
+	box-shadow: 1px 1px 5px;
+}
+.login button{
+	border: none;
+	height: 35px;
+	margin: 15px 0;
+	border-radius: 5px 5px;
+}
+.taito{
+    font-size: 12px;
+}
+.account {
+    font-size: 12px;
+    color: rgb(75, 72, 72);
+    text-align: center;
+}
+.account a{
+    background-color: white;
+    padding: 2px 15px;
+    border-radius: 6px 6px;
+    border-color: azure;
+    background: yellow;
+    font-size: 15px;
+    margin-top: 30px;
+    
+}
+.account a:hover{
+	box-shadow: 2px 2px 5px;
+	transition: 0.3s;
+	}
+footer{
+    
+    background-color: antiquewhite;
+    display: block;
+    align-items: flex-end;
+    text-align: center;
+
+}
+footer a{
+    margin: 20px;
+    padding: 20px;
+}
+button:hover{
+    cursor: pointer;
+    box-shadow: 1px 1px;
+    background-color: gray;
+}

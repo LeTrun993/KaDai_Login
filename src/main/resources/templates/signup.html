@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="signup.css">
+
+</head>
+
+<body>
+	<form th:action="@{/login}" class="container" method="post">
+		<h1>新規登録</h1>
+		<div class="form-control ">
+			<p class="pSize">姓：</p>
+			<input type="text" name="firstName" id="firstName" placeholder="例：森田">
+			<small th:text = "${error}"></small>
+			<span ></span>
+		</div>
+
+		<div class="form-control ">
+			<p class="pSize">名：</p>
+			<input type="text" name="lastName" id="lastName" placeholder="例：石">
+			<small th:text = "${error}"></small>
+			<!--Error message-->
+			<span></span>
+		</div>
+		<div class="form-control ">
+			<p class="pSize">フリガナ：</p>
+
+			<input type="text" name="firstName_furigana" id="firstName_furigana" placeholder="姓：">
+			<small th:text = "${error}"></small>
+			<span></span>
+		</div>
+
+		<div class="form-control ">
+
+
+			<input type="text" name="lastName_furigana" id="lastName_furigana" placeholder="名：">
+			<small th:text = "${error}"></small>
+			<span></span>
+		</div>
+
+		<div class="form-control ">
+			<p class="pSize">生年月日：</p>
+			<div class="birthday">
+				<div class="">
+
+					<input type="date" name="bday" id="bday" placeholder="">
+
+				</div>
+			</div>
+			<small th:text = "${error}"></small>
+			<span></span>
+		</div>
+
+		<div class="form-control ">
+			<p class="pSize">性別：</p>
+			<div class="gioitinh">
+				<div class="box1">
+					<p>男</p>
+					<p>女</p>
+				</div>
+				<div class="box2" name="gender" id="gioitinh">
+					<label>
+						<input type="radio" name="gender" value="male"> Nam
+					</label>
+
+					<label>
+						<input type="radio" name="gender" value="female"> Nữ
+					</label>
+				</div>
+			</div>
+			<small th:text = "${error}"></small>
+			<span></span>
+		</div>
+
+		<div class="form-control ">
+			<p class="pSize">メールアドレス：</p>
+			<input type="email" name="email" id="email" placeholder="Example@gmai.com">
+			<small th:text = "${error}"></small>
+			<span></span>
+		</div>
+
+		<div class="form-control ">
+			<p class="pSize">パスワード：</p>
+
+			<input type="password" name="password" id="password" placeholder="6文字以上必要です">
+			<small th:text = "${error}"></small>
+			<span></span>
+		</div>
+		<div class="form-control ">
+			<p class="pSize">再パスワード：</p>
+
+			<input type="password" name="confirm_password" id="confirm_password" placeholder="6文字以上必要です">
+			<small th:text = "${error}"></small>
+			<span></span>
+		</div>
+		<div class="form-control ">
+			<p class="pSize">住所：</p>
+
+			<input type="text" name="addres" id="addres" placeholder="千葉県松戸市横須賀２－１－７。。。">
+			<small th:text = "${error}"></small>
+			<span></span>
+		</div>
+		<div class="form-control ">
+			<p class="pSize">国籍：</p>
+			<select name="country" id="">
+				<option value="nhatban">日本</option>
+				<option value="vietnam">ベトナム</option>
+				<option value="hanquoc">韓国</option>
+				<option value="trungquoc">中国</option>
+				<option value="nepal">ネパール</option>
+				<option value="khac">他</option>
+			</select>
+			
+			<span></span>
+			<input type="submit" name="" id="dky" value="登録" onclick="submitData()">
+		</div>
+		<div class="signup-link">
+			Not a member <a th:href = "@{/login}">Signup</a>
+		</div>
+	</form>
+
+
+</body>
+<script src="signup.js"></script>
+
+</html>
