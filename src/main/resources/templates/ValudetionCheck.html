@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #form1{
+            width: 400px;
+            margin: auto;
+            padding: 10px 40px;
+            background: whitesmoke;
+            border: 1px solid black;
+        }
+        #form1 .txt{
+            width: 400px;
+            padding: 6px;
+            border: solid1px lightslategrey;
+        }
+        #form1 fieldset{
+            border: 1px solid lightslategrey;
+            margin-top: 0;
+        }
+        #form1 #dangky{
+            width: 100px; height: 40px; border: none;
+            background-color: royalblue; color: white;
+        }
+        #form1 #baoloi{
+            margin: 0px auto; color: red;
+        }
+        #form1 .loi{
+            width: 400px; padding: 6px;
+            border: 1px solid red; background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="form1">
+        <h2>DANG KY THANH VIEN</h2>
+        <p>
+            <label for="">Ma SV</label>
+            <input type="text" name="" id="masv" class="txt">
+        </p>
+        <p>
+            <label for="">Ho va Ten</label>
+            <input type="text" name="" id="hoten" class="txt">
+        </p>
+        <p>
+            <label for="">Email</label>
+            <input type="text" name="" id="email" class="txt">
+        </p>
+        <p>
+            <fieldset id="fs1">
+            <legend>Gioi tinh</legend>
+            <input type="radio" name="phai" id="nam" value="Nam"><label for="">Nam</label>
+            <input type="radio" name="phai" id="nu" value="Nu"><label for="">Nu</label>
+        </fieldset>
+        </p>
+        <p>
+            <fieldset id="fs2">
+            <legend>So thich</legend>
+            <input type="checkbox" name="st"><label for="">du lich</label>
+            <input type="checkbox" name="st"><label for="">game</label>
+            <input type="checkbox" name="st"><label for="">co bac</label>
+            <input type="checkbox" name="st"><label for="">ca do</label>
+            <input type="checkbox" name="st"><label for="">da ga</label>
+        </fieldset>      
+        </p>
+        <p>
+            <label for="">QUoc Tich</label>
+            <select name="country" id="country" class="txt">
+                <option value="0">Chon Country</option>
+                <option value="1">Vietnam</option>
+                <option value="2">China</option>
+                <option value="3">Japan</option>
+                <option value="4">Korea</option>
+                <option value="5">US</option>
+            </select>
+        </p>
+        <p>
+            <label for="">Ghi Chu</label>
+            <textarea name="" id="ghichu" cols="30" rows="10" class="txt"></textarea>
+        </p>
+        <div id="baoloi"></div>
+        <button type="button" onclick="return kiemtra()" id="dangky">Dang Ky</button>
+    </form>
+</body>
+</html>
+<script>
+    function kiemtra(){
+        var loi ="";
+//Kiem tra ma SV
+        var masv = document.getElementById("masv");
+        if(masv.value==""){
+        masv.classList.add("loi");
+        loi+= "ma sv khong dc bo trong<br>";
+        }else if(masv.value.length!=5){
+            masv.classList.add("loi");
+            loi+= "Ma sv khong chinh xac<br>";
+        }else masv.classList.remove("loi");
+ //Kiem tra ho va ten
+        var hoten = document.getElementById("hoten");
+        var regex = /^[a-zA-Z\u3040-\u309F\u30A0-\u30FF]+$/; // Regex for Roman and Kanji characters
+
+        if(hoten.value ==""){
+            hoten.classList.add("loi");
+            loi+= "Vui long nhap Ho va Ten<br>";
+        }else if(!regex.test(hoten.value)){
+            hoten.classList.add("loi");
+            loi += "Vui long nhap ROMA hoac KANJI<br>";
+        }else hoten.classList.remove("loi");
+//Kiem tra Email
+        var email =document.getElementById("email");
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(email.value ==""){
+            email.classList.add("loi");
+            loi += "Vui long nhap Email<br>";
+        }else if(!emailRegex.test(email.value)){
+            email.classList.add("loi");
+            loi+= "Email khong hop le<br>";
+        }else email.classList.remove("loi");
+
+//Kiem tra gioi tinh
+        // var nam = document.getElementById("nam");   // CACH 1
+        // var nu = document.getElementById("nu");
+        // if(!nam.checked && !nu.checked){        
+        //     // gender.classList.add("loi");
+        //     loi += "Vui long chon gioi tinh<br>";
+        // }
+        sodem = 0;                                      // CACH 2
+        var arr_phai = document.getElementsByName("phai");
+        for (i= 0; i< arr_phai.length; i++){
+            if(arr_phai[i].checked ==true) {
+                sodem++;
+        }
+        if(sodem==0){
+            document.getElementById("fs1").classList.add("loi");
+            loi += "Vui long chon gioi tinh<br>";
+        }else  document.getElementById("fs1").classList.remove("loi");
+    }
+//Ktra so thich 
+         sodem1 =0;
+        var arr_st = document.getElementsByName("st");
+        for (i =0; i<arr_st.length; i++){
+            if(arr_st[i].checked ==true ) {
+                sodem1++;    
+        }
+        if (sodem1 == 0){
+            document.getElementById("fs2").classList.add("loi");
+            loi += "VUi Long Chon So thich <br>";
+        }else  document.getElementById("fs2").classList.remove("loi");
+//Ktra quoc tich
+        var country = document.getElementById("country");
+        if(country.value ==0){
+            country.classList.add("loi");
+            loi += "vui long chon quoc tich";
+        }else country.classList.remove("loi");
+
+ //Ktra ghi chu
+        var ghich = document.getElementById("ghichu");
+        if (ghich.value.length > 200) {
+            ghich.classList.add("loi");
+            loi += "Ghi chú chỉ được chứa tối đa 200 ký tự";
+        } else {
+            ghichu.classList.remove("loi");
+        }
+
+
+
+
+        if(loi!=""){
+            document.getElementById('baoloi').innerHTML = loi;
+            setTimeout("document.getElementById('baoloi').innerHTML=''",5000)
+            return false;
+        }
+    }
+}
+</script>

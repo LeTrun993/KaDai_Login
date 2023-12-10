@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		#form1 .error-message {
+			color: red;
+		}
+
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			height: 100vh;
+			align-items: center;
+		}
+
+		#form1 {
+			border: 1px solid black;
+			padding: 20px;
+			height: 400px;
+		}
+	</style>
+</head>
+
+<body>
+	<form id="form1" class="container">
+		<h1>新規登録</h1>
+		<div class="form-control ">
+			<p class="pSize">姓：</p>
+			<input type="text" name="firstName" id="firstName" placeholder="例：森田">
+
+			<div id="errorFirstName"></div>
+		</div>
+		
+		<div class="form-control ">
+			<p class="pSize">名：</p>
+			<input type="text" name="lastName" id="lastName" placeholder="例：石">
+			<!--Error message-->
+			<div id="errorLastName"></div>
+			<input type="button" name="" id="dky" value="登録" onclick="return check()">
+		</div>
+
+	</form>
+</body>
+
+</html>
+<script>
+	function check() {
+		var loiFn = "";
+		var loiLn = "";
+		var loiFnF = "";
+		var loiLnF = "";
+		var loiBday = "";
+		var loiGender = "";
+		var loiMail = "";
+		var loiPass = "";
+		var loiCPass = "";
+		var loiAddres = "";
+		var loiCountry = "";
+
+
+		//Ktra Name
+		var firstName = document.getElementById('firstName');
+		var lastName = document.getElementById('lastName');
+		var regex = /^[a-zA-Zァ-ヶｦ-ﾟぁ-んゔ一-龠々〆ヵヶ]+$/ // Regex for Roman and Kanji characters
+
+
+		// Check first name
+		if (!firstName.value) {
+			loiFn += '名前を入力してください';
+		} else if (!regex.test(firstName.value)) {
+			loiFn += '名前はローマ字または漢字のみを含む必要があります';
+		}
+		firstName.classList.remove("error-message");
+            document.getElementById("errorFirstName").innerHTML = loiFn;
+
+		// Check last name
+		if (!lastName.value) {
+			loiLn += '名前を入力してください'
+		} else if (!regex.test(lastName.value)) {loiLn += '名前はローマ字または漢字のみを含む必要があります';}
+
+
+
+
+
+
+
+
+
+		if (loiFn) {
+			firstName.classList.add("error-message");
+			document.getElementById("errorFirstName").innerHTML = loiFn;
+		}
+		if (loiLn) {
+			lastName.classList.add("error-message");
+			document.getElementById("errorLastName").innerHTML = loiLn;
+		}
+
+
+
+	}
+</script>

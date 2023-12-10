@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome</title>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<style>
+		body {
+			border: 1px solid black;
+			height: 100vh;
+		}
+		#container {
+			height: 400px;
+		}
+		div .a, .b, .c, .d, .e{
+			background: rgb(0, 255, 64);
+			margin: 30px;
+			height: 50px;
+			width: 200px;
+			display: flex;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+	<div class="a">
+		<p>show/hide</p>
+	</div>
+	<div class="b">
+		<p>fade/fadeToogle/fadeTo</p>
+	</div>
+	<div class="c">
+		<p>slideUp-Down-Toogle</p>
+	</div>
+	<div class="d">
+		<p>animate({param},speed,callback)</p>
+	</div>
+	<div class="e">
+		<p>123</p>
+	</div>
+	</div>
+	<input type="button" value="show/hide" />
+	<input type="button" value="fade/fadeToogle/fadeTo" />
+	<input type="button" value="slideUp-Down-Toogle" />
+	<input type="button" value="animate({param},speed,callback)" />
+	<input type="button" value="show/hide" />
+	<input type="button" value="show/hide" />
+
+</body>
+<script src="index.js"></script>
+
+</html>

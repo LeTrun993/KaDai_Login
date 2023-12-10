@@ -5,6 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Welcome</title>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<style>
 		body {
 			height: 100vh;
@@ -16,7 +18,7 @@
 		}
 
 		.container {
-			width: 400px;
+			width: 600px;
 			border: none;
 			border-radius: 10px;
 			background-color: rgb(192, 192, 192);
@@ -26,62 +28,106 @@
 
 		input {
 			outline-style: none;
-			background: rgb(0, 255, 64);
-			height: 35px;
-			margin-top: 40px;
+			background: rgb(192, 192, 192);
 			border: none;
-			border-radius: 5px 5px;
 			padding: 5px 10px;
+			width: 100%;
+			height: 100%;
 		}
 
-		input:hover {
-			background: greenyellow;
-			box-shadow: 3px 3px 5px;
-			transition: 0.3s;
+		table th {
+			width: 80px;
+		}
+
+		table,
+		th {
+			border: 3px solid rgb(0, 0, 0);
+		}
+
+		table {
+			border-collapse: collapse;
+			margin-top: 20px;
+			width: 100%;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.nut {
+			margin-top: 15px;
+			background: rgb(0, 128, 255);
+			height: 30px;
+			padding: auto;
+			cursor: pointer;
+			color: white;
 		}
 	</style>
 
 </head>
 
 <body>
-	<form>
-		<div class=container>
+	<form th:action="@{/changePass}" method="post">
+		<div class="container">
 			<h1>個人情報確認：</h1>
-		
-		<table border="1">
-			<tr>
-				<th>姓名</th>
-				<td th:text="${user.firstName} + ${user.lastName}">...</td>
-			</tr>
-			<tr>
-				<th>フリガナ</th>
-				<td th:text="${user.firstName_furigana} + ${user.lastName_furigana}">...</td>
-			</tr>
-			<tr>
-				<th>生年月日</th>
-				<td th:text="${user.bday}">...</td>
-			</tr>
-			<tr>
-				<th>性別</th>
-				<td th:text="${user.gender}">...</td>
-			</tr>
-			<tr>
-				<th>Email</th>
-				<td th:text="${user.email}">...</td>
-			</tr>
-			<tr>
-				<th>パスワード</th>
-				<td th:text="${user.password}">...</td>
-			</tr>
-			<tr>
-				<th>住所</th>
-				<td th:text="${user.addres}">...</td>
-			</tr>
-			<tr>
-				<th>国籍</th>
-				<td th:text="${user.country}">...</td>
-			</tr>
-		</table>
+			<div th:if="${successMessage != null}">
+				<p th:text="${successMessage}" style="color: green;"></p>
+			</div>
+
+			<table class="table table-bordered">
+				<tr>
+					<th>姓名</th>
+					<td th:text="${user.firstName} + ${user.lastName}">...</td>
+				</tr>
+				<tr>
+					<th>フリガナ</th>
+					<td th:text="${user.firstName_furigana} + ${user.lastName_furigana}">...</td>
+				</tr>
+				<tr>
+					<th>生年月日</th>
+					<td th:text="${user.bday}">...</td>
+				</tr>
+				<tr>
+					<th>性別</th>
+					<td th:text="${user.gender}">...</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td th:text="${user.email}">...</td>
+				</tr>
+				<tr>
+					<th>パスワード</th>
+					<td th:text="${user.password}">...</td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td th:text="${user.addres}">...</td>
+				</tr>
+				<tr>
+					<th>国籍</th>
+					<td th:text="${user.country}">...</td>
+				</tr>
+			</table>
+			<button type="button"><a th:href="@{/changePass/{id}(id=${user.id})}">パスワードを変更</a></button>
 		</div>
+
 	</form>
+	<form th:action="@{/userList}" method="post">
+		<button type="submit">UserList</button>
+	</form>
+
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</html>
+<script>
+	$(document).ready(function () {
+		$(".nut").click(function () {
+			$(".hidden").fadeIn(function () {
+				$(".nut").fadeOut();
+			});
+		});
+	});
+</script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome</title>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+	<form th:action="@{/abc}" method="post">
+		<table border="1px">
+			<tr>
+				<td>Tên:</td>
+				<td>
+					<input type="text" name="name" id="name" onkeyup="check()" />
+				</td>
+				<td>
+					<div id="z-name"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td>
+					<input type="text" name="email" id="email" onkeyup="check()" />
+				</td>
+				<td>
+					<div id="z-email"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>Mật khẩu:</td>
+				<td>
+					<input type="text" name="password" id="password" onkeyup="check()" />
+				</td>
+				<td>
+					<div id="z-password"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>Xác nhận mật khẩu:</td>
+				<td>
+					<input type="text" name="cpassword" id="cpassword" onkeyup="check()" />
+				</td>
+				<td>
+					<div id="z-cpassword"></div>
+				</td>
+			</tr>
+		</table>
+		<input type="button" name="submit" value="Submit" />
+	</form>
+</body>
+<script>
+
+	function check() {
+		var data = new Array();
+		data[0] = document.getElementById('name').value;
+		data[1] = document.getElementById('email').value;
+		data[2] = document.getElementById('password').value;
+		data[3] = document.getElementById('cpassword').value;
+
+		var myerror = new Array();
+		myerror[0] = "<span style=’color:red,font-weight:bold’>Bạn chưa nhập tên</span>";
+		myerror[1] = "<span style=’color:red,font-weight:bold’>Bạn chưa nhập email</span>";
+		myerror[2] = "<span style=’color:red',font-weight:bold’>Bạn chưa nhập mật khẩu</span>";
+		myerror[3] = "<span style=’color:red,font-weight:bold’>Mật khẩu chưa khớp</span>";
+
+		var nearby = new Array("z-name", "z-email", "z-password", "z-cpassword");
+
+		for (i in data) {
+			var error = myerror[i];
+			var div = nearby[i];
+			if (data[i] == "") {
+				document.getElementById(div).innerHTML = error;
+			} else {
+				document.getElementById(div).innerHTML = "OK!";
+			}
+		}
+	}
+	function password() {
+		var fpw = document.getElementById("password").value;
+		var spw = document.getElementById("cpassword").value;
+		if (fpw === spw) {
+			document.getElementById('z-cpassword').innerHTML = "Mật khẩu đã khớp";
+		} else {
+			document.getElementById('z-cpassword').innerHTML = "<span style :'color=’red’>Mật khẩu chưa khớp</span>";
+		}
+	}
+</script>
+
+</html>

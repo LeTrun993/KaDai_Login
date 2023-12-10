@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome</title>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		body {
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			align-content: center;
+			background: linear-gradient(120deg, #3ca7ee, #9b408f);
+		}
+
+		.container {
+			width: 100%;
+			border: none;
+			border-radius: 10px;
+			background-color: rgb(192, 192, 192);
+			padding: 40px;
+			text-align: center;
+		}
+
+		input {
+			outline-style: none;
+			background: rgb(192, 192, 192);
+			border: none;
+			padding: 5px 10px;
+			width: 100%;
+			height: 100%;
+		}
+
+		table {
+			border-collapse: collapse;
+			margin-top: 20px;
+			width: inherit;
+
+		}
+
+		table th,
+		td {
+			border: 1px solid black;
+			margin: 5px;
+			padding: 10px;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.nut {
+			margin-top: 15px;
+			background: rgb(0, 128, 255);
+			height: 30px;
+			padding: auto;
+			cursor: pointer;
+			color: white;
+		}
+	</style>
+
+</head>
+
+<body>
+	<form th:action="@{/changePass}" method="get">
+		<div class="container">
+			<h1>User List:</h1>
+			<hr>
+			<table>
+				<tr>
+					<th>UserID</th>
+					<th>UserName</th>
+					<th>UserName_Furigana</th>
+					<th>Birthday</th>
+					<th>Gender</th>
+					<th>Email</th>
+					<th>Password</th>
+					<th>Address</th>
+					<th>Country</th>
+				</tr>
+				<tr th:each="user : ${user}">
+					<td th:text="${user.id}"></td>
+					<td th:text="${user.firstName}"></td>
+					<td th:text="${user.firstName_furigana} + ${user.lastName_furigana}"></td>
+					<td th:text="${user.bday}"></td>
+					<td th:text="${user.gender}"></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.password}"></td>
+					<td th:text="${user.addres}"></td>
+					<td th:text="${user.country}"></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</html>

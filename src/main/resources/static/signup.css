@@ -56,40 +56,17 @@ body{
 .form-control.error small{
     color: var(--error-color);
 }
-.form-control small{
-   
-}
+
 .form-control.error input{
     border-bottom: 2px solid var(--error-color);
 }
 .gioitinh{
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
+    display: flex;    
+	left: 0px;   
 }
-.box1 {
-    display: flex;  
-    font-size: 15px;
-}
-.box1 p{
-    margin: 0 7%;
-   
-
-}
-.box2{
-    display: flex;
-}
-.gioitinh input[type=checkbox]{
-    width: 20px;
-    height: 20px;   
-}
-.gioitinh input{
-    height: 20px;
-    margin: 0 15%;
-}
-.box2 input:focus  .box1 p{
-    color: #2691d9;
+.box2 {
+      display: flex;
+      margin: auto
 }
 /*
 .gioitinh input[type=checkbox]:focus  .box1 p{
@@ -121,6 +98,14 @@ body{
 .form-control:last-child option{
     font-size: 20px;
 }
+#listGender	{
+	width: 80px;
+	height: 30px;
+	border: none;
+	border-bottom: 2px solid  #adadad ;
+	outline: none;
+	font-size: 20px;
+}
 
 #dky{
     
@@ -149,4 +134,10 @@ body{
 }
 small{
 	color: var(--error-color);
+}
+#form1 #error{
+	color: red;
+}
+form1 .loi{
+	color: red;
 }

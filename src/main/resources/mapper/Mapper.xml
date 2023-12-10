@@ -3,12 +3,54 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.LoginMapper">
+	<!-- <resultMap type="com.example.model.LoginModel" id="result"> -->
+	<!-- <id property="id" column="id"/> -->
+	<!-- <result property="firstName" column="firstName"/> -->
+	<!-- <result property="lastName" column="lastName"/> -->
+	<!-- <result property="firstName_furigana" column="firstName_furigana"/> -->
+	<!-- <result property="lastName_furigana" column="lastName_furigana"/> -->
+	<!-- <result property="bday" column="bday"/> -->
+	<!-- <result property="gender" column="gender"/> -->
+	<!-- <result property="email" column="email"/> -->
+	<!-- <result property="password" column="password"/> -->
+	<!-- <result property="confirm_password" column="confirm_password"/> -->
+	<!-- <result property="addres" column="addres"/> -->
+	<!-- <result property="country" column="country"/> -->
+	<!-- </resultMap> -->
 
-    <insert id="insert" parameterType="com.example.model.LoginModel" useGeneratedKeys="true" keyProperty="id">
-    INSERT INTO mp_auth.login_trun(firstName,lastName,firstName_furigana,lastName_furigana,bday,gender,email,password,confirm_password,addres,country) 
-    VALUES (#{firstName},#{lastName},#{firstName_furigana},#{lastName_furigana},#{bday},#{gender},#{email},#{password},#{confirm_password},#{addres},#{country})
-    </insert>
-	
-	
+	<!-- Insert du lieu len DB -->
+
+	<insert id="insert" parameterType="com.example.model.LoginModel"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+		mp_auth.login_trun(firstName,lastName,firstName_furigana,lastName_furigana,bday,gender
+		,email,password,confirm_password,addres,country)
+		VALUES
+		(#{firstName},#{lastName},#{firstName_furigana},#{lastName_furigana},#{bday},#{gender}
+		,#{email},#{password},#{confirm_password},#{addres},#{country})
+	</insert>
+
+	<!-- select du lieu DB -->
+	<select id="selectAll"
+		resultType="com.example.model.LoginModel"
+		parameterType="com.example.model.LoginModel">
+		SELECT * FROM mp_auth.login_trun where (email = #{email}) and (password = #{password})
+	</select>
+	<select id="selectAllUser"
+		resultType="com.example.model.LoginModel"
+		parameterType="com.example.model.LoginModel">
+		SELECT * FROM mp_auth.login_trun
+	</select>
+	<select id ="checkAccount" resultType="com.example.model.LoginModel" parameterType="com.example.model.LoginModel">
+	 	SELECT * FROM mp_auth.login_trun where firstName =#{firstName}
+	 </select>
+	<!--Update du lieu -->
+
+		<update id="update" parameterType="com.example.model.LoginModel">
+			UPDATE mp_auth.login_trun
+			SET
+			password = #{password}
+			WHERE id = #{id}
+		</update>
 </mapper>
 	

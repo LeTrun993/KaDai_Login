@@ -6,40 +6,47 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="signup.css">
+	<!--	Font Awesome CSS-->
 
+	<style>
+		#form1 .error-message {
+			font-weight: initial;
+		}
+	</style>
 </head>
 
 <body>
-	<form th:action="@{/login}" class="container" method="post">
+	<form th:action="@{/login}" class="container" method="post" id="form1">
+
 		<h1>新規登録</h1>
 		<div class="form-control ">
 			<p class="pSize">姓：</p>
-			<input type="text" name="firstName" id="firstName" placeholder="例：森田">
-			<small th:text = "${error}"></small>
-			<span ></span>
+			<input type="text" name="firstName" id="firstName" placeholder="例：詠美 (EIMI)">
+			<small th:text="${error}"></small>
+			<div id="errorFirstName" style="color : red"></div>
 		</div>
 
 		<div class="form-control ">
 			<p class="pSize">名：</p>
-			<input type="text" name="lastName" id="lastName" placeholder="例：石">
-			<small th:text = "${error}"></small>
+			<input type="text" name="lastName" id="lastName" placeholder="例：福田 (FUKUDA)">
+			<small th:text="${error}"></small>
 			<!--Error message-->
-			<span></span>
+			<div id="errorLastName" style="color : red"></div>
 		</div>
 		<div class="form-control ">
 			<p class="pSize">フリガナ：</p>
 
-			<input type="text" name="firstName_furigana" id="firstName_furigana" placeholder="姓：">
-			<small th:text = "${error}"></small>
-			<span></span>
+			<input type="text" name="firstName_furigana" id="firstName_furigana" placeholder="姓：えいみ">
+			<small th:text="${error}"></small>
+			<div id="error-firstName_furigana" style="color : red"></div>
 		</div>
 
 		<div class="form-control ">
 
 
-			<input type="text" name="lastName_furigana" id="lastName_furigana" placeholder="名：">
-			<small th:text = "${error}"></small>
-			<span></span>
+			<input type="text" name="lastName_furigana" id="lastName_furigana" placeholder="名：ふくだ">
+			<small th:text="${error}"></small>
+			<div id="error-lastName_furigana" style="color : red"></div>
 		</div>
 
 		<div class="form-control ">
@@ -51,80 +58,256 @@
 
 				</div>
 			</div>
-			<small th:text = "${error}"></small>
-			<span></span>
+			<small th:text="${error}"></small>
+			<div id="error-bday" style="color : red"></div>
 		</div>
 
 		<div class="form-control ">
 			<p class="pSize">性別：</p>
 			<div class="gioitinh">
-				<div class="box1">
-					<p>男</p>
-					<p>女</p>
-				</div>
-				<div class="box2" name="gender" id="gioitinh">
+				
+				<div class="box2" name="gender" id="gender">
 					<label>
-						<input type="radio" name="gender" value="male"> Nam
+						<input type="radio" name="gender" value="male" onclick="radioCheck()"> Boy
 					</label>
 
 					<label>
-						<input type="radio" name="gender" value="female"> Nữ
+						<input type="radio" name="gender" value="female" onclick="radioCheck()"> Girl
 					</label>
 				</div>
 			</div>
-			<small th:text = "${error}"></small>
-			<span></span>
+			<small th:text="${error}"></small>
+			<div id="error-gender" style="color : red"></div>
 		</div>
 
 		<div class="form-control ">
 			<p class="pSize">メールアドレス：</p>
 			<input type="email" name="email" id="email" placeholder="Example@gmai.com">
-			<small th:text = "${error}"></small>
-			<span></span>
+			<small th:text="${error}"></small>
+			<div id="error-email" style="color : red"></div>
 		</div>
 
 		<div class="form-control ">
 			<p class="pSize">パスワード：</p>
 
-			<input type="password" name="password" id="password" placeholder="6文字以上必要です">
-			<small th:text = "${error}"></small>
-			<span></span>
+			<input type="password" name="password" id="password" placeholder="大文字・小文字、数字、記号を含む">
+			<small th:text="${error}"></small>
+			<div id="error-password" style="color : red"></div>
 		</div>
 		<div class="form-control ">
 			<p class="pSize">再パスワード：</p>
 
-			<input type="password" name="confirm_password" id="confirm_password" placeholder="6文字以上必要です">
-			<small th:text = "${error}"></small>
-			<span></span>
+			<input type="password" name="confirm_password" id="confirm_password" placeholder="大文字・小文字、数字、記号を含む">
+			<small th:text="${error}"></small>
+			<div id="error-confirm_password" style="color : red"></div>
 		</div>
 		<div class="form-control ">
 			<p class="pSize">住所：</p>
 
-			<input type="text" name="addres" id="addres" placeholder="千葉県松戸市横須賀２－１－７。。。">
-			<small th:text = "${error}"></small>
-			<span></span>
-		</div>
-		<div class="form-control ">
-			<p class="pSize">国籍：</p>
-			<select name="country" id="">
-				<option value="nhatban">日本</option>
-				<option value="vietnam">ベトナム</option>
-				<option value="hanquoc">韓国</option>
-				<option value="trungquoc">中国</option>
-				<option value="nepal">ネパール</option>
-				<option value="khac">他</option>
-			</select>
-			
-			<span></span>
-			<input type="submit" name="" id="dky" value="登録" onclick="submitData()">
-		</div>
-		<div class="signup-link">
-			Not a member <a th:href = "@{/login}">Signup</a>
-		</div>
+			<input type="text" name="addres" id="addres" placeholder="千葉県松戸市横須賀２－１－７">
+			<small th:text="${error}"></small>
+			<div id="error-addres" style="color : red"></div>
+			<div class="form-control ">
+				<p class="pSize">国籍：</p>
+				<select name="country" id="country">
+
+
+				</select>
+
+				<div id="error-country" style="color : red"></div>
+				<input type="submit" name="" id="dky" value="登録" onclick="return check()">
+			</div>
+			<div class="signup-link">
+				Not a member <a th:href="@{/login}">Signup</a>
+			</div>
 	</form>
 
 
 </body>
-<script src="signup.js"></script>
 
 </html>
+<script>
+	function check() {
+		var loiFn = "";
+		var loiLn = "";
+		var loiFnF = "";
+		var loiLnF = "";
+		var loiBday = "";
+		var loiGender = "";
+		var loiEmail = "";
+		var loiPass = "";
+		var loiCPass = "";
+		var loiAddres = "";
+		var loiCountry = "";
+
+
+		//Ktra Name
+		var firstName = document.getElementById('firstName');
+		var lastName = document.getElementById('lastName');
+		var regex = /^[a-zA-Zァ-ヶｦ-ﾟぁ-んゔ一-龠々〆ヵヶ\s]+$/ // Regex for Roman and Kanji characters
+
+
+		// Check first name
+		if (!firstName.value) {
+			loiFn += '名前を入力してください';
+		} else if (!regex.test(firstName.value)) {
+			loiFn += '名前はローマ字または漢字のみを含む必要があります';
+		}
+		firstName.classList.remove("error-message");
+		document.getElementById("errorFirstName").innerHTML = loiFn;
+
+		// Check last name
+		if (!lastName.value) {
+			loiLn += '名前を入力してください'
+		} else if (!regex.test(lastName.value)) {loiLn += '名前はローマ字または漢字のみを含む必要があります';}
+		lastName.classList.remove("error-message");
+		document.getElementById("errorLastName").innerHTML = loiLn;
+
+
+		//Ktra Furigana
+		var firstName_furigana = document.getElementById("firstName_furigana");
+		var lastName_furigana = document.getElementById("lastName_furigana");
+		var kataRegex = /^[\u3040-\u309F\s]+$/;
+
+		if (!firstName_furigana.value) {
+			loiFnF += "ひらがなで入力してください";
+		} else if (!kataRegex.test(firstName_furigana.value)) {
+			loiFnF += "ひらがなで入力してください";
+		}
+		firstName_furigana.classList.remove("error-message");
+		document.getElementById("error-firstName_furigana").innerHTML = loiFnF;
+
+		if (!lastName_furigana.value) {
+			loiLnF += "ひらがなで入力してください";
+		} else if (!kataRegex.test(lastName_furigana.value)) {
+			loiLnF += "ひらがなで入力してください";
+		}
+		lastName_furigana.classList.remove("error-message");
+		document.getElementById("error-lastName_furigana").innerHTML = loiLnF;
+
+
+		//Ktra Bday
+		var bdayInput = document.getElementById("bday");
+		var selectDate = new Date(bdayInput.value);
+		var currenDate = new Date();
+		if (!bdayInput.value) {
+			loiBday += "生年月日を選択してください";
+			bdayInput.classList.remove("error-message");
+			document.getElementById("error-bday").innerHTML = loiBday;
+		}
+		if (selectDate > currenDate) {
+			loiBday += "生年月日エラー";
+
+		}
+		bdayInput.classList.remove("error-message");
+		document.getElementById("error-bday").innerHTML = loiBday;
+		//Ktra gioi tinh
+//		var gender = document.getElementById("gender");
+//		if (!gender.value) {
+//			loiGender += "性別を選択してください";
+//		} else loiGender += "";
+//		document.getElementById("error-gender").innerHTML = loiGender;
+		//	gender.classList.remove("error-message");
+		//Ktra Email
+		var emailInput = document.getElementById("email");
+		var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailInput.value) {
+			loiEmail += "メールを入力してください<br>";
+			document.getElementById("error-email").innerHTML = loiEmail;
+		}
+		else
+			if (!emailRegex.test(emailInput.value)) {
+				loiEmail += "エラー";
+			}
+		document.getElementById("error-email").innerHTML = loiEmail;
+		emailInput.classList.remove("error-message");
+
+		//Ktra password
+		var passwordInput = document.getElementById("password");
+		const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+		if (!passwordInput.value) {
+			loiPass += "パスワードを入力してください";
+		}
+		else if (!passwordRegex.test(passwordInput.value)) {
+			loiPass += "少なくとも8文字で、大文字、小文字、特殊文字、数字を含む必要があります";
+		}
+		document.getElementById("error-password").innerHTML = loiPass;
+		passwordInput.classList.remove("error-message");
+
+		// Ktra confirmPassword
+
+		var cfPass = document.getElementById("confirm_password");
+		if (!cfPass.value) {
+			loiCPass += "パスワードを入力してください"
+		} else if (cfPass.value !== passwordInput.value) {
+			loiCPass += "エラー、パスワードが一致しません。もう一度確認してください"
+		}
+		document.getElementById("error-confirm_password").innerHTML = loiCPass;
+		cfPass.classList.remove("error-message");
+		
+		//Ktra copy password
+		cfPass.addEventListener("paste", function (e) {
+			e.preventDefault();
+			return false;
+		});
+
+		// Ktra Addres
+		var addresInput = document.getElementById("addres");
+		const addressRegex = /^[\dー−－―一-龠々〆ぁ-んァ-ヶ\s]+$/;
+		//^[〒\d〒\dー−－―\u4E00-\u9FA0]+$/;
+		if (!addresInput.value) {
+			loiAddres += "住所を入力してください";
+		} else if (!addressRegex.test(addresInput.value)) {
+			loiAddres += "住所が正しくない。もう一度確認してください";
+		}
+		document.getElementById("error-addres").innerHTML = loiAddres;
+		addresInput.classList.remove("error-message");
+
+
+		if (loiFn || loiLn || loiFnF || loiLnF || loiBday || loiGender || loiEmail || loiPass || loiCPass || loiAddres) {
+			return false;
+		}
+		return true;
+	}
+
+	// Ngan chan submit, Ktra form trc khi submit
+	document.getElementById("form1").addEventListener("submit", function (event) {
+		event.preventDefault();
+		// Goi ham check() va ktra ket qua
+		if (check()) {
+			// Neu ham check() tra ve true, thuc hien submit form
+			this.submit();
+		}
+		// Neu ham check() tra ve false, form sẽ không dc submit
+	});
+
+	//Gender
+//	var listGender = ["男", "女", "他の"]
+//	for (i = 0; i < listGender.length; i++) {
+//		//tao option
+//		var options = document.createElement("option");
+//		options.vlue = listGender[i];
+//		options.text = listGender[i];
+		// add Option vao select
+//		document.getElementById("listGender").appendChild(options);
+//	}
+	// Object Country
+	var listCountry = ["Viet Nam", "Japan", "Nepal", "Korea", "Indo", "他の"]
+	for (i = 0; i < listCountry.length; i++) {
+		// tao Option moi
+		var option = document.createElement("option");
+		// lay gtri array gan vao option
+		option.value = listCountry[i];
+		option.text = listCountry[i];
+
+		//them option vao the select 
+		document.getElementById("country").appendChild(option);
+	}
+	function radioCheck() {
+		var gender = document.getElementById("gender");
+		document.getElementById("error-gender").innerHTML = '';
+		//gender.classList.remove("error-message");
+	}
+	
+</script>

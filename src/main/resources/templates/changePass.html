@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head >
+    <meta charset="UTF-8" >
+    <title >Title</title >
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/Useraccount.css"/>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/js/Useraccount.js"></script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		.container {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+		}
+
+		label {
+			margin-bottom: 8px;
+		}
+
+		input {
+			padding: 8px;
+			margin-bottom: 16px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		button {
+			padding: 10px;
+			background-color: #4caf50;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+
+<body>
+	<form th:action="@{/welcome}" method="post">
+		<div class="container">
+			<h1>パスワード変更</h1>
+<!--			<div class="form-group">-->
+<!--				<label for="newPassword">今のパスワード：</label>-->
+<!--				<input type="password" class="form-control" id="currenPassword" name="currenPassword" required>-->
+<!--			</div>-->
+
+			<div class="form-group">
+				<label for="newPassword">新しいパスワード：</label>
+				<input type="password" class="form-control" id="newPassword" name="password" required>
+			</div>
+<!--			<div class="form-group">-->
+<!--				<label for="confirmNewPassword">新しいパスワード確認：</label>-->
+<!--				<input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" required>-->
+<!--			</div>-->
+			<div th:text = "${message}"></div>
+<!--			 Thêm nút submit form -->
+			<button type="submit" class="btn btn-primary">確認</button>
+			<button type="button" class="btn btn-primary">キャンセル</button>
+	
+		</div>
+	</form>
+	
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
